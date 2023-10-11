@@ -1,0 +1,6 @@
+{
+  "databaseURL": "https://your-story-p5ji7v.eu-central-1.xata.sh/db/main",
+  "codegen": {
+    "output": "src/xata.ts"
+  }
+}
