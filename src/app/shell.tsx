@@ -12,14 +12,14 @@ import {
   Image,
   Text,
   Card,
+  Paper,
 } from "@mantine/core"
-
 import { useDisclosure } from "@mantine/hooks"
 import { motion, AnimatePresence } from "framer-motion"
 import { usePathname } from "next/navigation"
 import Links from "./links"
 import Link from "next/link"
-import { Book, ShoppingCart } from "tabler-icons-react"
+import { Book, Plus, ShoppingCart } from "tabler-icons-react"
 import { useAtom, useAtomValue } from "jotai"
 import { modals } from "@mantine/modals"
 
@@ -34,8 +34,8 @@ const Shell = ({ children }) => {
       header={{ height: 60 }}
       navbar={{
         width: 300,
-        breakpoint: "sm",
-        collapsed: { desktop: true, mobile: !opened },
+        breakpoint: "xl",
+        collapsed: { mobile: !opened },
       }}
       padding="md"
     >
@@ -65,6 +65,9 @@ const Shell = ({ children }) => {
       <AppShell.Main
         p={pathname == "/" ? 0 : 16}
         pt={pathname == "/" ? 0 : 60 + 16}
+        maw={800}
+        mx="auto"
+        mt={60}
       >
         <AnimatePresence key={path}>
           <motion.div
@@ -73,24 +76,16 @@ const Shell = ({ children }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "anticipate" }}
           >
-            <Card m={72}>{children}</Card>
+            <Paper mx="auto">{children}</Paper>
           </motion.div>
         </AnimatePresence>
       </AppShell.Main>
       {pathname != "/cart" && (
         <Affix position={{ bottom: 32, right: 32 }}>
-          {/* <Link href="/cart"> */}
-          <motion.div
-            // key={getTotalItems(cart)}
-            initial={{ scale: 2 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 0.5, ease: "anticipate" }}
-            // style={{ objectPosition: "100% 100%" }}
-          >
-            <Button
-              px={12}
-              style={{ borderWidth: 2, borderColor: "black" }}
-              size="md"
+          <Link href="/create">
+            <ActionIcon
+              radius="xl"
+              size="xl"
               onClick={() =>
                 modals.openContextModal({
                   modal: "cartModal",
@@ -98,9 +93,10 @@ const Shell = ({ children }) => {
                   innerProps: {},
                 })
               }
-            ></Button>
-          </motion.div>
-          {/* </Link> */}
+            >
+              <Plus />
+            </ActionIcon>
+          </Link>
         </Affix>
       )}
     </AppShell>

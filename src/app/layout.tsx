@@ -15,6 +15,13 @@ import { AppShell, Burger, Group, UnstyledButton, Stack } from "@mantine/core"
 import Shell from "./shell"
 import "public/styles.css"
 import { ModalsProvider } from "@mantine/modals"
+import { Noto_Serif, Young_Serif } from "next/font/google"
+
+const ys = Noto_Serif({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+})
 
 export const metadata = {
   title: "Your Story",
@@ -32,7 +39,7 @@ export default function RootLayout({ children }: { children: any }) {
           content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
         />
       </head>
-      <body>
+      <body className={ys.className}>
         <MantineProvider theme={theme}>
           <ModalsProvider modals={{}}>
             <Shell>{children}</Shell>

@@ -1,7 +1,9 @@
+"use client"
 import React from "react"
+import { Button } from "@mantine/core"
 
 const Page = () => {
-  return <div>page</div>
+  return "asd"
 }
 
 export default Page

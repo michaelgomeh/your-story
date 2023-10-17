@@ -11,13 +11,13 @@ const Links = ({ close }: { close?: () => CallableFunction }) => {
   }
 
   return (
-    <Flex gap={8}>
+    <Stack align="center">
       {Object.keys(urls).map((e) => (
         <Link href={urls[e]} onClick={close} key={e}>
           <Text>{e}</Text>
         </Link>
       ))}
-    </Flex>
+    </Stack>
   )
 }
 
