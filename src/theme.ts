@@ -2,22 +2,22 @@
 
 import { MantineColorsTuple, createTheme } from "@mantine/core"
 
-const pizza: MantineColorsTuple = [
-  "#fff0e4",
-  "#ffe0cf",
-  "#fac0a1",
-  "#f69e6e",
-  "#f28043",
-  "#f06d27",
-  "#f06418",
-  "#d6530c",
-  "#bf4906",
-  "#a73c00",
+const flower: MantineColorsTuple = [
+  "#ffeaf3",
+  "#fdd4e1",
+  "#f4a7bf",
+  "#ec779c",
+  "#e64f7e",
+  "#e3356b",
+  "#e22762",
+  "#c91a52",
+  "#b41149",
+  "#9f003e",
 ]
 
 export const theme = createTheme({
-  primaryColor: "pizza",
+  primaryColor: "flower",
   colors: {
-    pizza: pizza,
+    flower: flower,
   },
 })
