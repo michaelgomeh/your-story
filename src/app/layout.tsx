@@ -12,7 +12,7 @@ import {
 import { theme } from "../theme"
 import { useDisclosure } from "@mantine/hooks"
 import { AppShell, Burger, Group, UnstyledButton, Stack } from "@mantine/core"
-import Shell from "./shell"
+import Shell from "../components/shell"
 import "public/styles.css"
 import { ModalsProvider } from "@mantine/modals"
 import { Noto_Serif, Young_Serif } from "next/font/google"

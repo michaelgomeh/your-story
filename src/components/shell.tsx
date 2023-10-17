@@ -17,7 +17,7 @@ import {
 import { useDisclosure } from "@mantine/hooks"
 import { motion, AnimatePresence } from "framer-motion"
 import { usePathname } from "next/navigation"
-import Links from "./links"
+import Links from "../app/links"
 import Link from "next/link"
 import { Book, Plus, ShoppingCart } from "tabler-icons-react"
 import { useAtom, useAtomValue } from "jotai"
@@ -38,6 +38,7 @@ const Shell = ({ children }) => {
         collapsed: { mobile: !opened },
       }}
       padding="md"
+      pt={60}
     >
       <AppShell.Header>
         <Group
@@ -62,13 +63,7 @@ const Shell = ({ children }) => {
       <AppShell.Navbar py="md" px={4}>
         <Links />
       </AppShell.Navbar>
-      <AppShell.Main
-        p={pathname == "/" ? 0 : 16}
-        pt={pathname == "/" ? 0 : 60 + 16}
-        maw={800}
-        mx="auto"
-        mt={60}
-      >
+      <AppShell.Main p={16} maw={800} mx="auto">
         <AnimatePresence key={path}>
           <motion.div
             key={path}
@@ -76,7 +71,9 @@ const Shell = ({ children }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "anticipate" }}
           >
-            <Paper mx="auto">{children}</Paper>
+            <Card mx="auto" withBorder>
+              {children}
+            </Card>
           </motion.div>
         </AnimatePresence>
       </AppShell.Main>

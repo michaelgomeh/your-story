@@ -9,11 +9,7 @@ const Page = ({ params }: { params: { id: string } }) => {
 
   if (stories!.length == 0) return "loading"
 
-  return (
-    <Paper>
-      <StoryCard story={stories![0]} fullView={true}></StoryCard>
-    </Paper>
-  )
+  return <StoryCard story={stories![0]} fullView={true}></StoryCard>
 }
 
 export default Page

@@ -19,17 +19,6 @@ import useStories from "@/lib/utils"
 import StoryList from "@/components/storyList"
 
 export default function HomePage() {
-  // const [stories, setStories] = useState<Story[] | null>([])
-
-  // const init = async () => {
-  //   let res = JSON.parse(await getStories())
-  //   setStories(res)
-  // }
-
-  // useEffect(() => {
-  //   init()
-  // }, [])
-
   return (
     <Stack>
       <h1>Recent Stories</h1>

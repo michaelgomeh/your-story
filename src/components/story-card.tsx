@@ -1,12 +1,13 @@
 import {
-  Card,
   Title,
   Text,
   Group,
   Stack,
   Spoiler,
   ActionIcon,
+  Card,
 } from "@mantine/core"
+import Link from "next/link"
 import React, { useState } from "react"
 import { ArrowDown, CaretDown, CaretUp } from "tabler-icons-react"
 
@@ -21,36 +22,28 @@ const StoryCard = ({
   let { author, content, id, title } = story
 
   const [showLabel, setShowLabel] = useState(false)
-  return (
-    <Card withBorder component="a" href={`/stories/${id}`}>
-      <Stack>
-        <Group justify="space-between">
-          <Text>{title}</Text>
+
+  const Body = () => (
+    <Stack p="sm">
+      <Group justify="space-between">
+        <Text size="lg">{title}</Text>
+        <Link href={`/authors/${author.id}`}>
           <Text size="sm" c="gray">
             {author?.name ?? "anonymus"}
           </Text>
-        </Group>
-        <Text>
-          {!fullView && content.length > 100
-            ? content.substring(0, 100) + "..."
-            : content}
-        </Text>
-        {/* <Spoiler
-          hideLabel={
-            <ActionIcon radius="xl">
-              <CaretUp />
-            </ActionIcon>
-          }
-          showLabel={
-            <ActionIcon radius="xl">
-              <CaretDown />
-            </ActionIcon>
-          }
-          maxHeight={50}
-        >
-          {content}
-        </Spoiler> */}
-      </Stack>
+        </Link>
+      </Group>
+      <Text ta="justify">
+        {!fullView && content.length > 100
+          ? content.substring(0, 100) + "..."
+          : content}
+      </Text>
+    </Stack>
+  )
+  if (fullView) return <Body />
+  return (
+    <Card component="a" href={`/stories/${id}`}>
+      <Body />
     </Card>
   )
 }
