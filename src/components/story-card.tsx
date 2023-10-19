@@ -39,7 +39,7 @@ const StoryCard = ({
         <Text
           size="sm"
           c="dimmed"
-          onClick={() => router.push(`/authors/${author.id}`)}
+          onClick={() => router.push(`/authors/${(author as Author).id}`)}
           style={{ cursor: "pointer" }}
         >
           {author?.name ?? "anonymus"}
