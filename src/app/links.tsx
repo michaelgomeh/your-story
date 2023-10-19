@@ -12,8 +12,7 @@ const Links = ({ close }: { close: () => void }) => {
   const router = useRouter()
   const urls: Urls = {
     Home: "/",
-    Stories: "/stories",
-    About: "/about",
+    Profile: `/authors/${session?.user.id}`,
   }
 
   return (

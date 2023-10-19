@@ -23,7 +23,8 @@ export default function HomePage() {
   return (
     <Stack>
       <h1>Your Story</h1>
-      Signed in as {session?.user?.email}
+      <h2>Recent Stories</h2>
+      <StoryList params={{}} />
     </Stack>
   )
 }

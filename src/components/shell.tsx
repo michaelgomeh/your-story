@@ -13,6 +13,7 @@ import {
   Text,
   Card,
   Paper,
+  Avatar,
 } from "@mantine/core"
 import { motion, AnimatePresence } from "framer-motion"
 import { usePathname, useRouter } from "next/navigation"
@@ -58,7 +59,9 @@ const Shell = ({ children }) => {
             </Box>
             <Text fs={"italic"}>Your Story</Text>
           </Group>
-          {!session?.user && (
+          {session?.user ? (
+            <Avatar src={session?.user.image} />
+          ) : (
             <Button variant="light" onClick={() => signIn()}>
               Sign In
             </Button>
@@ -82,7 +85,7 @@ const Shell = ({ children }) => {
           </motion.div>
         </AnimatePresence>
       </AppShell.Main>
-      {pathname != "/cart" && (
+      {pathname != "/create" && session?.user && (
         <Affix position={{ bottom: 32, right: 32 }}>
           <Link href="/create">
             <ActionIcon
