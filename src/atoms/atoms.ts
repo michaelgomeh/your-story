@@ -1,6 +1,8 @@
 import { atom } from "jotai"
 import { atomWithStorage } from "jotai/utils"
 
+export const drawerOpenedAtom = atom(false)
+
 ////////////
 
 const countAtom = atom(0)

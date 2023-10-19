@@ -2,25 +2,25 @@
 import React from "react"
 import { Card, Stack } from "@mantine/core"
 import { Avatar, Text, Button, Paper } from "@mantine/core"
-import useStories from "@/lib/utils"
 import StoryList from "@/components/storyList"
+import { useAuthor } from "@/lib/hooks"
+import { useSession } from "next-auth/react"
 
-const Page = () => {
+const Page = ({ params }: { params: { id: string } }) => {
+  const { data: session } = useSession()
+
+  const author = useAuthor({ id: params.id })
+  if (!author) return "Loading..."
   return (
-    <Stack>
-      <Avatar
-        src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=255&q=80"
-        size={120}
-        radius={120}
-        mx="auto"
-      />
-      <Text ta="center" fz="lg" fw={500} mt="md">
-        Jane Fingerlicker
+    <Stack gap={8}>
+      <Avatar src={author?.image} size={120} radius={120} mx="auto" />
+      <Text ta="center" fz="lg" fw={500}>
+        {author?.name}
       </Text>
       <Text ta="center" c="dimmed" fz="sm">
-        jfingerlicker@me.io • Art director
+        {`${author?.email}   •   Writer`}
       </Text>
-      <StoryList params={{ authorName: "Mike" }} />
+      <StoryList params={{ authorId: author!.id }} />
     </Stack>
   )
 }

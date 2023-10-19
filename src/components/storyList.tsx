@@ -1,8 +1,8 @@
 "use client"
-import useStories from "@/lib/utils"
 import { Stack } from "@mantine/core"
 import React from "react"
 import StoryCard from "./story-card"
+import { useStories } from "@/lib/hooks"
 
 const StoryList = ({ params }: { params: StoryFilters }) => {
   const stories = useStories({ params: params })

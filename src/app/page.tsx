@@ -13,18 +13,17 @@ import Link from "next/link"
 import { Book } from "tabler-icons-react"
 import useSWR from "swr"
 import { useEffect, useState } from "react"
-import { getStories } from "./api/get-stories"
 import StoryCard from "@/components/story-card"
-import useStories from "@/lib/utils"
 import StoryList from "@/components/storyList"
+import { signIn, useSession } from "next-auth/react"
+import { createStory } from "@/lib/functions"
 
 export default function HomePage() {
+  const { data: session } = useSession()
   return (
     <Stack>
-      <h1>Recent Stories</h1>
-      <StoryList params={{}} />
-      {/* <Button onClick={asd}>get</Button> */}
-      {/* <Button onClick={createAccount}>creae acc</Button> */}
+      <h1>Your Story</h1>
+      Signed in as {session?.user?.email}
     </Stack>
   )
 }

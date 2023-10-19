@@ -16,6 +16,7 @@ import Shell from "../components/shell"
 import "public/styles.css"
 import { ModalsProvider } from "@mantine/modals"
 import { Noto_Serif, Young_Serif } from "next/font/google"
+import NextAuthSessionProvider from "@/providers/sessionprovider"
 
 const ys = Noto_Serif({
   weight: "400",
@@ -33,18 +34,20 @@ export default function RootLayout({ children }: { children: any }) {
     <html lang="en">
       <head>
         <ColorSchemeScript />
-        <link rel="shortcut icon" href="/favicon.svg" />
+        <link rel="shortcut icon" href="/favicon.png" />
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
         />
       </head>
       <body className={ys.className}>
-        <MantineProvider theme={theme}>
-          <ModalsProvider modals={{}}>
-            <Shell>{children}</Shell>
-          </ModalsProvider>
-        </MantineProvider>
+        <NextAuthSessionProvider>
+          <MantineProvider theme={theme}>
+            <ModalsProvider modals={{}}>
+              <Shell>{children}</Shell>
+            </ModalsProvider>
+          </MantineProvider>
+        </NextAuthSessionProvider>
       </body>
     </html>
   )

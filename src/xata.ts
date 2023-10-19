@@ -77,6 +77,7 @@ const tables = [
       { name: "title", type: "string" },
       { name: "author", type: "link", link: { table: "nextauth_users" } },
       { name: "content", type: "text" },
+      { name: "tags", type: "multiple" },
     ],
   },
 ] as const;

@@ -1,6 +1,6 @@
 "use client"
 import StoryCard from "@/components/story-card"
-import useStories from "@/lib/utils"
+import { useStories } from "@/lib/hooks"
 import { Card, Paper } from "@mantine/core"
 import React, { useEffect } from "react"
 

@@ -6,15 +6,18 @@ interface Author {
 }
 
 interface Story {
-  id: string
+  id?: string
   title: string
-  author: Author
+  author: Author | string
+  tags: string[]
   content: string
+  created?: string
 }
 
 interface StoryFilters {
   id?: string
   title?: string
   authorName?: string
+  authorId?: string
   tags?: string[]
 }

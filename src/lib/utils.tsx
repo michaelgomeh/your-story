@@ -1,19 +1,17 @@
-import { getStories } from "@/app/api/get-stories"
 import { useState, useEffect } from "react"
+import { getAuthor, getStories } from "./functions"
+import dayjs from "dayjs"
 
-const useStories = ({ params }: { params: StoryFilters }) => {
-  const [stories, setStories] = useState<Story[] | null>([])
+export const formatStoryCreationDate = (creationDate) => {
+  const now = dayjs()
+  const storyDate = dayjs(creationDate)
+  const daysAgo = now.diff(storyDate, "day")
 
-  const init = async () => {
-    let res = JSON.parse(await getStories({ params }))
-    setStories(res)
-  }
-
-  useEffect(() => {
-    init()
-  }, [])
-
-  return stories
+  if (daysAgo === 0) {
+    return "Today"
+  } else if (daysAgo <= 7) {
+    return `${daysAgo} days ago`
+  } else if (daysAgo <= 30) {
+    return storyDate.format("D.M")
+  } else return storyDate.format("D.M.YY")
 }
-
-export default useStories
